@@ -6,12 +6,8 @@ import unittest, time, re
 
 
 class APITest():
-    """
-    接口测试类
-    """
     def apicall(self, method, url, getparams, postparams):
         str1 = ''
-        # GET方法调用
         if method == 'GET':
             if getparams != "":
                 for k in getparams:
@@ -20,7 +16,6 @@ class APITest():
                         str1 = str1 + "&"
                 url = url + "&" + str1;
             result = urllib2.urlopen(url).read()
-        # POST方法调用
         if method == 'POST':
             if postparams != "":
                 data = urllib.urlencode(postparams)
