@@ -1,10 +1,14 @@
-import pymssql
+# -*-coding:utf-8 -*-
 import MySQLdb
-import setting
+import pymssql
 from logs.pyapilog import pyapilog
+
+from apiFrame import setting
+
 
 class sqldriver(object):
     def __init__(self, host, port, user, password, database):
+        #这里初始化具体数据库信息
         self.host = host
         self.port = port
         self.user = user

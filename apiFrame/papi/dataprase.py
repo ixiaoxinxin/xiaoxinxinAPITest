@@ -1,8 +1,10 @@
 # -*-coding:utf-8 -*-
 # !/usr/bin/python
 import json
+
 import xmltodict
-from logs.pyapilog import pyapilog
+
+from apiFrame.logs.pyapilog import pyapilog
 
 
 # 解析json字符串

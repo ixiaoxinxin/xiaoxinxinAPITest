@@ -1,7 +1,12 @@
 # -*-coding:utf-8 -*-
 # !/usr/bin/python
 
-import logging, datetime, os, setting
+import datetime
+import logging
+import os
+
+from apiFrame import setting
+
 logLevel = {
     1 : logging.NOTSET,
     2 : logging.DEBUG,
@@ -10,7 +15,7 @@ logLevel = {
     5 : logging.ERROR,
     6 : logging.CRITICAL
 }
-setFile = os.path.join(setting.root_dir,'setting.ini')
+setFile = os.path.join(setting.root_dir, 'setting.ini')
 loggers = {}
 def pyapilog(**kwargs):
     global loggers

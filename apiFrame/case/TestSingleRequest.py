@@ -1,11 +1,15 @@
 # -*-coding:utf-8 -*-
-from ddt import ddt, data, unpack
 import unittest
+
+from ddt import ddt, data, unpack
 from papi.httprequest import SendHttpRequest
-from papi.dataparse import jsonprase, xmlprase
+
+from apiFrame.papi.dataprase import jsonprase, xmlprase
+
 
 @ddt
 class TestSingleRequest(unittest.TestCase):
+    #定义数据信息
     def setUp(self):
         self.url = "http://xxxxxxxxxxxxxxxxxxx/api/xxxxxx"
     @data(
@@ -17,9 +21,9 @@ class TestSingleRequest(unittest.TestCase):
         value = {"sid": sid, "count": count}
         data = SendHttpRequest(self.url).get(value)
         json_data = jsonprase(data)
-        point_lat = json_data.find_json_node_by_xpath("/Point/Lat")
+        point_lat = json_data.find_json_node_by_xpath("/Point/Lat")#通过json_data包查找节点
         point_lng = json_data.find_json_node_by_xpath("/Point/Lng")
-        is_exists_map = json_data.find_json_node_by_xpath("/Ptd/AmapGuideMap155/IsExistsMap")
+        is_exists_map = json_data.find_json_node_by_xpath("/Ptd/AmapGuideMap155/IsExistsMap")#导入正确的数据，从数据库中导入
         size = json_data.find_json_node_by_xpath("/Ptd/AmapGuideMap155/Size")
         # 断言
         assert float(point_lat) != 0 and float(point_lng) != 0
@@ -39,6 +43,7 @@ class TestSingleRequest(unittest.TestCase):
         data = SendHttpRequest(self.url).get(value)
         self.assertEqual(data, u'{"Message":"请求无效。"}')
 
+#另外一个测试用例方法
 @ddt
 class TourMaps(unittest.TestCase):
     def setUp(self):

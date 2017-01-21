@@ -1,7 +1,10 @@
-from logs.pyapilog import pyapilog
-import requests
+# -*-coding:utf-8 -*-
 import json
 import urllib
+
+import requests
+
+from apiFrame.logs.pyapilog import pyapilog
 
 
 class SendHttpRequest(object):
@@ -24,6 +27,7 @@ class SendHttpRequest(object):
     def post_json(self, value):
         head = {'content-type': 'application/json'}
         try:
+            #多出一个步骤，把数据转换成json形式
             req = requests.post(self.url, data=json.dumps(value), headers=head)
             print req.url
         except Exception, err:
